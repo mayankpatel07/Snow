@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snowman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Iceberg&family=Libre+Baskerville&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #0b1c33;
+    }
+
+    .container {
+      width: 300px;
+      height: 400px;
+      background-color: #113F67;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    /* Snowflakes */
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      width: 8px;
+      height: 8px;
+      background-color: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(420px);
+        opacity: 0;
+      }
+    }
+
+    .snowflake:nth-child(1) { left: 10px; animation-duration: 4s; animation-delay: 0s; }
+    .snowflake:nth-child(2) { left: 30px; animation-duration: 5s; animation-delay: 1s; }
+    .snowflake:nth-child(3) { left: 60px; animation-duration: 4.5s; animation-delay: 0.5s; }
+    .snowflake:nth-child(4) { left: 90px; animation-duration: 6s; animation-delay: 2s; }
+    .snowflake:nth-child(5) { left: 120px; animation-duration: 3.5s; animation-delay: 0.2s; }
+    .snowflake:nth-child(6) { left: 150px; animation-duration: 5s; animation-delay: 1.5s; }
+    .snowflake:nth-child(7) { left: 180px; animation-duration: 4s; animation-delay: 1s; }
+    .snowflake:nth-child(8) { left: 210px; animation-duration: 6s; animation-delay: 2.2s; }
+    .snowflake:nth-child(9) { left: 240px; animation-duration: 4.3s; animation-delay: 0.7s; }
+    .snowflake:nth-child(10) { left: 270px; animation-duration: 5.5s; animation-delay: 1.3s; }
+
+    .top-body {
+      width: 80px;
+      height: 80px;
+      background-color: white;
+      position: absolute;
+      top: 140px;
+      left: 110px;
+      border: 2px solid black;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .bottom-body {
+      width: 120px;
+      height: 120px;
+      background-color: white;
+      position: absolute;
+      top: 205px;
+      left: 90px;
+      border: 2px solid black;
+      border-radius: 50%;
+    }
+
+    .top-scarf {
+      width: 60px;
+      height: 10px;
+      background-color: red;
+      position: absolute;
+      top: 210px;
+      left: 120px;
+      z-index: 1;
+      border: 2px solid red;
+    }
+
+    .left-scarf {
+      width: 10px;
+      height: 40px;
+      background-color: red;
+      position: absolute;
+      top: 210px;
+      left: 130px;
+      z-index: 1;
+      border: 3px solid red;
+    }
+
+    .right-scarf {
+      width: 10px;
+      height: 25px;
+      background-color: red;
+      position: absolute;
+      top: 210px;
+      left: 155px;
+      z-index: 1;
+      border: 3px solid red;
+    }
+
+    .left-hand {
+      width: 50px;
+      height: 7px;
+      rotate: -45deg;
+      background-color: rgb(182, 88, 30);
+      position: absolute;
+      top: 220px;
+      left: 195px;
+      z-index: -1;
+    }
+
+    .right-hand {
+      width: 50px;
+      height: 7px;
+      rotate: 45deg;
+      background-color: rgb(182, 88, 30);
+      position: absolute;
+      top: 220px;
+      left: 55px;
+      z-index: -1;
+    }
+
+    .left-eye {
+      width: 20px;
+      height: 20px;
+      background-color: black;
+      position: absolute;
+      top: 170px;
+      left: 120px;
+      z-index: 1;
+      border-radius: 50%;
+    }
+
+    .right-eye {
+      width: 20px;
+      height: 20px;
+      background-color: black;
+      position: absolute;
+      top: 170px;
+      left: 160px;
+      z-index: 1;
+      border-radius: 50%;
+    }
+
+    .nose {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 15px solid orange;
+      position: absolute;
+      top: 185px;
+      left: 140px;
+      z-index: 1;
+    }
+
+    .bottom-hat {
+      width: 75px;
+      height: 15px;
+      rotate: 10deg;
+      background-color: black;
+      position: absolute;
+      top: 135px;
+      left: 120px;
+      z-index: 2;
+      border-radius: 30%;
+    }
+
+    .middle-hat {
+      width: 60px;
+      height: 10px;
+      rotate: 10deg;
+      background-color: red;
+      position: absolute;
+      top: 130px;
+      left: 130px;
+      border-radius: 30%;
+      z-index: 3;
+    }
+
+    .top-hat {
+      width: 60px;
+      height: 50px;
+      rotate: 10deg;
+      background-color: black;
+      position: absolute;
+      top: 85px;
+      left: 135px;
+    }
+
+    .text {
+      font-family: "Iceberg", sans-serif;
+      position: absolute;
+      top: 330px;
+      left: 70px;
+      color: aliceblue;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Snowflakes -->
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+
+    <!-- Snowman -->
+    <div class="top-hat"></div>
+    <div class="middle-hat"></div>
+    <div class="bottom-hat"></div>
+    <div class="top-body"></div>
+    <div class="bottom-body"></div>
+    <div class="top-scarf"></div>
+    <div class="left-scarf"></div>
+    <div class="right-scarf"></div>
+    <div class="left-hand"></div>
+    <div class="right-hand"></div>
+    <div class="left-eye"></div>
+    <div class="right-eye"></div>
+    <div class="nose"></div>
+    <div class="text"><h1>SNOWMAN</h1></div>
+  </div>
+</body>
+</html>
